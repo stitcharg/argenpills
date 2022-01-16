@@ -52,7 +52,8 @@
   "devDependencies": {
     "auto-changelog": "~2.3.0",
     "react-scripts": "^4.0.3",
-    "sass": "^1.43.5"
+    "sass": "^1.43.5",
+    "react-error-overlay": "6.0.9"
   },
   "engines": {
     "node": ">=10",
