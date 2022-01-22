@@ -6,14 +6,18 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors());
+app.use(cors())
+
+const db = require('./queries');
+
+app.get('/pills', db.getPills);
 
 /*
 app.use('/login', (req, res) => {
 	res.send({
 		token: 'test123'
 	});
-});*/
+});
 
 let answer = {
 	error: false,
@@ -51,5 +55,6 @@ app.post('/pill', function (req, res) {
 
 	res.send(answer);
 });
+*/
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/'));
