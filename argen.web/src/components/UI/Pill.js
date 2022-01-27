@@ -25,11 +25,11 @@ export default function Pill(data) {
 			<Card.Body>
 				<Card.Title>{data.name} {data.color}
 					{warning === DANGER &&
-						<Badge bg="danger">Danger</Badge>
+						<Badge bg="danger">Peligrosa</Badge>
 					}
 
 					{warning === WARNING &&
-						<Badge bg="warning">Warning</Badge>
+						<Badge bg="warning">Cuidado</Badge>
 					}
 
 				</Card.Title>
