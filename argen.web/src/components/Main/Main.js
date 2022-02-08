@@ -6,7 +6,6 @@ import { Container } from 'react-bootstrap';
 import PillList from '../UI/PillsList';
 
 import APData from '../../data/AP.json';	//this is read only in DEV mode
-
 export default function Main() {
 
 	const url = process.env.REACT_APP_ENDPOINT_PILLS;
@@ -31,7 +30,6 @@ export default function Main() {
 	if (loading === true) {
 		return <div>Cargando...</div>;
 	}
-
 
 	return (
 		<Container className="p-3">

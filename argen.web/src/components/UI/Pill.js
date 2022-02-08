@@ -21,6 +21,7 @@ export default function Pill(data) {
 	console.log("Pill Data", data);
 	return (
 		<Card className="pill">
+			<Card.Header>Pastilla</Card.Header>
 			<Card.Img variant="top" src={data.image} />
 			<Card.Body>
 				<Card.Title>{data.name} {data.color}

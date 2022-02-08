@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Logo from './components/Logo/Logo';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/Dashboard/Dashboard';
-import Preferences from './components/Preferences/Preferences';
+//import Dashboard from './components/Dashboard/Dashboard';
+//import Preferences from './components/Preferences/Preferences';
 import Main from './components/Main/Main';
-import Login from './components/Login/Login';
-import useToken from './components/App/useToken';
+//import Login from './components/Login/Login';
+//import useToken from './components/App/useToken';
 
 function App() {
 	//const { token, setToken } = useToken();
@@ -20,7 +20,8 @@ function App() {
 
 	return (
 		<div className="wrapper">
-			<h1>Application</h1>
+			<Logo />
+
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Main />} />

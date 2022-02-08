@@ -6,8 +6,8 @@ import { Row, Col } from "react-bootstrap";
 export default function PillList(props) {
 	if (props.data) {
 		return (
-			<Row>
-				{props.data.map(pill => <Col key={pill.id}><Pill
+			<Row xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
+				{props.data.map(pill => <Col xs key={pill.id}><Pill
 					key={pill.id}
 					name={pill.name}
 					color={pill.color}
