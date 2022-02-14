@@ -7,6 +7,8 @@ import { ListGroup } from "react-bootstrap";
 import PillSubstance from "./Pill/Substance";
 import dayjs from 'dayjs';
 
+import TestImageModal from './Modal';
+
 require('dayjs/locale/es');
 dayjs.locale('es');
 
@@ -21,7 +23,6 @@ export default function Pill(data) {
 	console.log("Pill Data", data);
 	return (
 		<Card className="pill">
-			<Card.Header>Pastilla</Card.Header>
 			<Card.Img variant="top" src={data.image} />
 			<Card.Body>
 				<Card.Title>{data.name} {data.color}
@@ -53,6 +54,8 @@ export default function Pill(data) {
 
 			<Card.Footer>
 				<Button variant="primary" size="sm" href={data.ap}>Visitar ArgenPills</Button>
+
+				<TestImageModal lab_image_url={data.lab_image_url} />
 			</Card.Footer>
 		</Card>
 	);
