@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Modal, Image } from 'react-bootstrap';
 
 export default function TestImageModal(props) {
@@ -13,7 +13,7 @@ export default function TestImageModal(props) {
 
 	return (
 		<>
-			<Button variant="success" onClick={handleShow} size="sm">
+			<Button variant="success" onClick={handleShow} size="sm" className='btnViewTest'>
 				Ver foto del test
 			</Button>
 
@@ -22,7 +22,7 @@ export default function TestImageModal(props) {
 					<Modal.Title>Test</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Image src={props.lab_image_url}></Image>
+					<Image src={props.lab_image_url} className="img-fluid"></Image>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="primary" onClick={handleClose}>

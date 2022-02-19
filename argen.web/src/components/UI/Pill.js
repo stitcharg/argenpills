@@ -5,6 +5,8 @@ import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 
 import PillSubstance from "./Pill/Substance";
+import PillLoad from "./Pill/Load";
+
 import dayjs from 'dayjs';
 
 import TestImageModal from './Modal';
@@ -40,7 +42,7 @@ export default function Pill(data) {
 
 				<ListGroup variant="flush">
 					{data.load &&
-						<ListGroup.Item>Carga: {data.load}</ListGroup.Item>
+						<PillLoad load={data.load} />
 					}
 
 					<PillSubstance substance={data.substance}></PillSubstance>

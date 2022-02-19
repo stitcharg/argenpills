@@ -4,6 +4,10 @@ import { ListGroup } from "react-bootstrap";
 export default function PillSubstance(props) {
 	const substances = [
 		{
+			id: 0,
+			desc: 'Desconocida'
+		},
+		{
 			id: 1,
 			desc: 'MDMA',
 		},
@@ -13,7 +17,7 @@ export default function PillSubstance(props) {
 		}
 	]
 
-	if (props.substance) {
+	if (props.substance != null) {
 		return (
 			<ListGroup.Item>Sustancia: {substances[props.substance].desc}</ListGroup.Item>
 		);
