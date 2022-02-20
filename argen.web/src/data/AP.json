@@ -1,0 +1,56 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"name": "Barcelona",
+			"color": "Rosa",
+			"date": "2022-01-01T03:00:00.000Z",
+			"substance": null,
+			"load": null,
+			"image": "https://loremflickr.com/640/360?random=1",
+			"warning": null,
+			"lab_url": null,
+			"ap_url": "https://argenpills.org/showthread.php?tid=6005",
+			"lab_image_url": null
+		},
+		{
+			"id": 2,
+			"name": "Bitcoin",
+			"color": "Amarilla",
+			"date": "2022-02-20T03:00:00.000Z",
+			"substance": 1,
+			"load": null,
+			"image": "https://loremflickr.com/640/360?random=2",
+			"warning": 1,
+			"lab_url": null,
+			"ap_url": "https://argenpills.org/showthread.php?tid=5931",
+			"lab_image_url": "https://loremflickr.com/640/360?random=1"
+		},
+		{
+			"id": 3,
+			"name": "Dracula",
+			"color": "Roja",
+			"date": "2022-02-25T03:00:00.000Z",
+			"substance": 1,
+			"load": 3,
+			"image": "https://loremflickr.com/640/360?random=3",
+			"warning": 2,
+			"lab_url": "http://lab.com",
+			"ap_url": "https://argenpills.org/showthread.php?tid=5932",
+			"lab_image_url": "https://loremflickr.com/640/360?random=4\n"
+		},
+		{
+			"id": 4,
+			"name": "Calaveras",
+			"color": "Rosas",
+			"date": "2022-02-23T03:00:00.000Z",
+			"substance": 2,
+			"load": 2,
+			"image": "https://loremflickr.com/640/360?random=6",
+			"warning": 2,
+			"lab_url": "http://lab.com",
+			"ap_url": "https://argenpills.org/showthread.php?tid=5932",
+			"lab_image_url": "https://loremflickr.com/640/360?random=46"
+		}
+	]
+}
