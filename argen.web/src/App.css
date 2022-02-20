@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.pill {
+	width: 18rem;
+	margin-bottom: 15px;
+}
+
+.pill .card-title .badge {
+	margin-left: 10px;
+}
