@@ -7,11 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .btnViewTest {
   margin-left: 5px;
+}
+
+.iconPillLoad {
+  float:right;
+  size: 20px;
+  cursor: pointer;
 }

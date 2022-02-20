@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './components/Main/Main';
 //import Login from './components/Login/Login';
 //import useToken from './components/App/useToken';
-
+import Footer from './components/UI/Footer';
 function App() {
 	//const { token, setToken } = useToken();
 
@@ -27,6 +27,9 @@ function App() {
 					<Route path="/" element={<Main />} />
 				</Routes>
 			</BrowserRouter>
+
+			<Footer />
+
 		</div>
 	);
 }

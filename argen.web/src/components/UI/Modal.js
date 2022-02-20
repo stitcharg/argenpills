@@ -7,8 +7,6 @@ export default function TestImageModal(props) {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	console.log(props);
-
 	if (props.lab_image_url == null) return null;
 
 	return (
