@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.93fcef5c.css",
-    "main.js": "/static/js/main.1902110f.js",
-    "static/js/787.8498022b.chunk.js": "/static/js/787.8498022b.chunk.js",
-    "index.html": "/index.html",
-    "main.93fcef5c.css.map": "/static/css/main.93fcef5c.css.map",
-    "main.1902110f.js.map": "/static/js/main.1902110f.js.map",
-    "787.8498022b.chunk.js.map": "/static/js/787.8498022b.chunk.js.map"
+    "main.css": "/stitcharg.github.io/static/css/main.83643e1e.css",
+    "main.js": "/stitcharg.github.io/static/js/main.6f1f5fc6.js",
+    "static/js/787.8498022b.chunk.js": "/stitcharg.github.io/static/js/787.8498022b.chunk.js",
+    "index.html": "/stitcharg.github.io/index.html",
+    "main.83643e1e.css.map": "/stitcharg.github.io/static/css/main.83643e1e.css.map",
+    "main.6f1f5fc6.js.map": "/stitcharg.github.io/static/js/main.6f1f5fc6.js.map",
+    "787.8498022b.chunk.js.map": "/stitcharg.github.io/static/js/787.8498022b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.93fcef5c.css",
-    "static/js/main.1902110f.js"
+    "static/css/main.83643e1e.css",
+    "static/js/main.6f1f5fc6.js"
   ]
 }
