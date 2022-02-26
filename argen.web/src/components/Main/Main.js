@@ -5,15 +5,16 @@ import { Container } from 'react-bootstrap';
 
 import PillList from '../UI/PillsList';
 
-import APData from '../../data/AP.json';	//this is read only in DEV mode
+import APData from '../../data/AP.json';	//this is read only in PROD mode
 export default function Main() {
 
-	const url = process.env.REACT_APP_ENDPOINT_PILLS;
 	const [answerAPI, SetAPIAnswer] = useState({});
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		const queryAPI = async () => {
+			const url = process.env.REACT_APP_ENDPOINT_PILLS;
+
 			setLoading(true);
 
 			const consulta = (

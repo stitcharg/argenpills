@@ -19,6 +19,7 @@ export default function PillList(props) {
 					warning={pill.warning}
 					substance={pill.substance}
 					lab_image_url={pill.lab_image_url}
+					notes={pill.notes}
 				/></Col>)
 				}
 			</Row >

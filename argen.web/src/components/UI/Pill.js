@@ -5,6 +5,7 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 import PillSubstance from "./Pill/Substance";
 import PillLoad from "./Pill/Load";
 import PillBadge from "./Pill/PillBadge";
+import PillComment from "./Pill/PillComment";
 
 import dayjs from 'dayjs';
 
@@ -14,7 +15,7 @@ require('dayjs/locale/es');
 dayjs.locale('es');
 
 export default function Pill(data) {
-	const parsedDate = dayjs(data.date, 'es', true).format('DD-MMMM-YYYY');
+	const parsedDate = dayjs(data.date, 'es', true).format('MMMM-YYYY');
 
 	//console.log("Pill Data", data);
 	return (
@@ -30,6 +31,7 @@ export default function Pill(data) {
 				<ListGroup variant="flush">
 					<PillSubstance substance={data.substance}></PillSubstance>
 					<PillLoad load={data.load} />
+					<PillComment comment={data.notes}></PillComment>
 				</ListGroup>
 
 				{data.lab != null &&

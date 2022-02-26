@@ -1,7 +1,7 @@
 var connection = require('./connection');
 
 const getPills = (request, response) => {
-	connection.pool.query('SELECT * FROM pills ORDER BY id ASC', (error, results) => {
+	connection.pool.query('SELECT * FROM pills ORDER BY date DESC', (error, results) => {
 		if (error) {
 			throw error
 		}
