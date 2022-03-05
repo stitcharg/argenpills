@@ -1,7 +1,7 @@
 // in src/authProvider.js
 export default {
 	login: ({ username, password }) => {
-		const URL = "https://8x0vttg1ti.execute-api.us-east-1.amazonaws.com/authenticate";
+		const URL = process.env.REACT_APP_ENDPOINT + "/authenticate";
 
 		const request = new Request(URL, {
 			method: 'POST',

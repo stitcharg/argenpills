@@ -27,7 +27,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "update-test-site": "npm run build && rm -r ~/Projects/stitcharg.github.io/docs && cp -a ./build/. ~/Projects/stitcharg.github.io/docs/ && cp -a ./src/data/ ~/Projects/stitcharg.github.io/docs/data"
+    "update-test-site": "npm run build && rm -r ~/Projects/stitcharg.github.io/docs && cp -a ./build/. ~/Projects/stitcharg.github.io/docs/ && cp -a ./src/data/ ~/Projects/stitcharg.github.io/docs/data",
+    "build:production": "NODE_ENV=production react-scripts build",
+    "upload:production": "aws s3 sync build s3://argenpills-mobile --profile ap"
   },
   "eslintConfig": {
     "extends": [

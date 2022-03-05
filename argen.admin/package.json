@@ -17,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:production": "NODE_ENV=production react-scripts build",
+    "upload:production": "aws s3 sync build s3://argenpills-admin --profile ap"
   },
   "eslintConfig": {
     "extends": [

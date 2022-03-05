@@ -5,7 +5,6 @@ import { Container } from 'react-bootstrap';
 
 import PillList from '../UI/PillsList';
 
-import APData from '../../data/AP.json';	//this is read only in PROD mode
 export default function Main() {
 
 	const [answerAPI, SetAPIAnswer] = useState({});
@@ -17,8 +16,7 @@ export default function Main() {
 
 			setLoading(true);
 
-			const query = (
-				process.env.NODE_ENV === "development" ? await axios({ url }) : APData);
+			const query = await axios({ url });
 
 			SetAPIAnswer(query);
 

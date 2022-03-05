@@ -9,7 +9,7 @@ import authProvider from './components/authprovider';
 import dashboard from './pages/dashboard';
 import { fetchUtils } from 'react-admin';
 
-const URL = "https://8x0vttg1ti.execute-api.us-east-1.amazonaws.com";
+const URL = process.env.REACT_APP_ENDPOINT;
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {

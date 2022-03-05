@@ -11,8 +11,10 @@ import Footer from './components/UI/Footer';
 import ReactGA from 'react-ga';
 function App() {
 
-	ReactGA.initialize('UA-221362845-1');
-	ReactGA.pageview(window.location.pathname + window.location.search);
+	if (process.env.NODE_ENV == 'production') {
+		ReactGA.initialize('UA-221362845-1');
+		ReactGA.pageview(window.location.pathname + window.location.search);
+	}
 
 	return (
 		<div className="wrapper">
