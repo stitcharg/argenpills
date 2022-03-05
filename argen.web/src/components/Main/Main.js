@@ -17,10 +17,10 @@ export default function Main() {
 
 			setLoading(true);
 
-			const consulta = (
+			const query = (
 				process.env.NODE_ENV === "development" ? await axios({ url }) : APData);
 
-			SetAPIAnswer(consulta);
+			SetAPIAnswer(query);
 
 			setLoading(false);
 		};

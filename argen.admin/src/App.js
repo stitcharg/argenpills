@@ -1,38 +1,212 @@
-import React, { Component } from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
-import './scss/style.scss'
+import React from 'react';
+import { Admin, Resource } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import { PillList } from "./components/pills"
+import { PillEdit } from './components/editpill';
+import { PillAdd } from './components/addpill';
 
-const loading = (
-	<div className="pt-3 text-center">
-		<div className="sk-spinner sk-spinner-pulse"></div>
-	</div>
-)
+import authProvider from './components/authprovider';
+import dashboard from './pages/dashboard';
+import { fetchUtils } from 'react-admin';
 
-// Containers
-const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+const URL = "https://8x0vttg1ti.execute-api.us-east-1.amazonaws.com";
 
-// Pages
-const Login = React.lazy(() => import('./views/pages/login/Login'))
-const Register = React.lazy(() => import('./views/pages/register/Register'))
-const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
-const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
+const httpClient = (url, options = {}) => {
+  if (!options.headers) {
+    options.headers = new Headers({ Accept: 'application/json' });
+  }
+  const { token } = JSON.parse(localStorage.getItem('auth'));
+  options.headers.set('Authorization', `Bearer ${token}`);
+  return fetchUtils.fetchJson(url, options);
+};
 
-class App extends Component {
-	render() {
-		return (
-			<HashRouter>
-				<React.Suspense fallback={loading}>
-					<Switch>
-						<Route exact path="/login" name="Login Page" render={(props) => <Login {...props} />} />
+const dataProvider = jsonServerProvider(URL, httpClient);
 
-						<Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
-						<Route exact path="/500" name="Page 500" render={(props) => <Page500 {...props} />} />
-						<Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
-					</Switch>
-				</React.Suspense>
-			</HashRouter>
-		)
-	}
+const myDataProvider = {
+  ...dataProvider,
+  create: (resource, params) => {
+    if (resource !== 'items' && (!params.data.upl_image || !params.data.upl_lab_image)) {
+      // fallback to the default implementation
+      return dataProvider.create(resource, params);
+    }
+
+    //const fileExtension = fileName.split('.').pop();
+
+    if (params.data.upl_image) {
+      const rawFile = params.data.upl_image.rawFile;
+      const fileName = rawFile.path;  //will be used to know the extension for the upload  
+      const pill_image_raw = params.data.upl_image;
+
+      if (!pill_image_raw.rawFile instanceof File) {
+        return Promise.reject('Error: Not a file...'); // Didn't test this...
+      }
+
+      var dataWithImageProm = Promise.resolve(convertFileToBase64(pill_image_raw))
+        .then((picture64) => ({
+          src: picture64.replace(/data:image\/(png|jpg|jpeg);base64,/, ''),
+          title: `${fileName}`
+        }))
+        .then(transformedpill_image_raw => {
+          return {
+            upl_image: transformedpill_image_raw
+          }
+        });
+
+    }
+
+    if (params.data.upl_lab_image) {
+      //Lab image
+      const rawFile = params.data.upl_lab_image.rawFile;
+      const lab_image_raw = params.data.upl_lab_image;
+      const fileName = rawFile.path;  //will be used to know the extension for the upload  
+
+      if (!lab_image_raw.rawFile instanceof File) {
+        return Promise.reject('Error: Not a file...'); // Didn't test this...
+      }
+
+      var dataWithLabProm = Promise.resolve(convertFileToBase64(lab_image_raw))
+        .then((picture64) => ({
+          src: picture64.replace(/data:image\/(png|jpg|jpeg);base64,/, ''),
+          title: `${fileName}`
+        }))
+        .then(transformedpill_image_raw => {
+          return {
+            upl_lab: transformedpill_image_raw
+          }
+        });
+
+    }
+
+    return Promise.all([dataWithImageProm, dataWithLabProm]).then((results) => {
+      const pillImage = results[0];
+      const labImage = results[1];
+
+      const existingData = {
+        data: {
+          ...params.data
+        }
+      }
+
+      if (pillImage) {
+        existingData.data.upl_image = pillImage.upl_image.src;
+      }
+
+      if (labImage) {
+        existingData.data.upl_lab = labImage.upl_lab.src;
+      }
+
+      return Promise.resolve(dataProvider.create(resource, existingData));
+    });
+
+    //return Promise.reject("DONT SUBMIT");
+
+  },
+  update: (resource, params) => {
+    if (resource !== 'items' && (!params.data.upl_image || !params.data.upl_lab_image)) {
+      // fallback to the default implementation
+      return dataProvider.update(resource, params);
+    }
+
+    //const fileExtension = fileName.split('.').pop();
+
+    if (params.data.upl_image) {
+      const rawFile = params.data.upl_image.rawFile;
+      const fileName = rawFile.path;  //will be used to know the extension for the upload  
+      const pill_image_raw = params.data.upl_image;
+
+      if (!pill_image_raw.rawFile instanceof File) {
+        return Promise.reject('Error: Not a file...'); // Didn't test this...
+      }
+
+      var dataWithImageProm = Promise.resolve(convertFileToBase64(pill_image_raw))
+        .then((picture64) => ({
+          src: picture64.replace(/data:image\/(png|jpg|jpeg);base64,/, ''),
+          title: `${fileName}`
+        }))
+        .then(transformedpill_image_raw => {
+          return {
+            upl_image: transformedpill_image_raw
+          }
+        });
+    }
+
+    if (params.data.upl_lab_image) {
+      //Lab image
+      const rawFile = params.data.upl_lab_image.rawFile;
+      const lab_image_raw = params.data.upl_lab_image;
+      const fileName = rawFile.path;  //will be used to know the extension for the upload  
+
+      if (!lab_image_raw.rawFile instanceof File) {
+        return Promise.reject('Error: Not a file...'); // Didn't test this...
+      }
+
+      var dataWithLabProm = Promise.resolve(convertFileToBase64(lab_image_raw))
+        .then((picture64) => ({
+          src: picture64.replace(/data:image\/(png|jpg|jpeg);base64,/, ''),
+          title: `${fileName}`
+        }))
+        .then(transformedpill_image_raw => {
+          return {
+            upl_lab: transformedpill_image_raw
+          }
+        });
+    }
+
+    return Promise.all([dataWithImageProm, dataWithLabProm]).then((results) => {
+
+      const pillImage = results[0];
+      const labImage = results[1];
+
+      const existingData = {
+        ...params,
+        data: {
+          ...params.data
+        }
+      }
+
+      if (pillImage) {
+        existingData.data.upl_image = pillImage.upl_image.src;
+      }
+
+      if (labImage) {
+        existingData.data.upl_lab = labImage.upl_lab.src;
+      }
+
+      //console.log(existingData);
+
+      return Promise.resolve(dataProvider.update(resource, existingData));
+    });
+
+    //return Promise.reject("DONT SUBMIT");
+
+  },
+};
+
+/**
+* Convert a `File` object returned by the upload input into a base 64 string.
+* That's not the most optimized way to store images in production, but it's
+* enough to illustrate the idea of data provider decoration.
+*/
+const convertFileToBase64 = file =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file.rawFile);
+  });
+
+function App() {
+  return (
+    <Admin
+      dashboard={dashboard}
+      dataProvider={myDataProvider}
+      authProvider={authProvider}
+      title="Administracion"
+    >
+      <Resource name="items" list={PillList} edit={PillEdit} create={PillAdd} />
+    </Admin>
+  );
 }
 
-export default App
+export default App;

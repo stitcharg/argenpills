@@ -43,7 +43,7 @@ export default function Pill(data) {
 			<Card.Footer>
 				<Button variant="primary" size="sm" href={data.ap}>Visitar ArgenPills</Button>
 
-				<TestImageModal lab_image_url={data.lab_image_url} />
+				<TestImageModal lab_image_url={data.lab_image} />
 			</Card.Footer>
 		</Card>
 	);
