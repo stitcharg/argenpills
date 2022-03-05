@@ -11,14 +11,15 @@ export default function PillList(props) {
 					key={pill.id}
 					name={pill.name}
 					color={pill.color}
-					date={pill.date}
+					date={pill.posted_date}
 					load={pill.load}
 					image={pill.image}
 					lab={pill.lab_url}
 					ap={pill.ap_url}
 					warning={pill.warning}
 					substance={pill.substance}
-					lab_image_url={pill.lab_image_url}
+					lab_image={pill.lab_image}
+					notes={pill.notes}
 				/></Col>)
 				}
 			</Row >
