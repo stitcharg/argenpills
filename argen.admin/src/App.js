@@ -9,6 +9,8 @@ import authProvider from './components/authprovider';
 import dashboard from './pages/dashboard';
 import { fetchUtils } from 'react-admin';
 
+import ReactGA from 'react-ga';
+
 const URL = process.env.REACT_APP_ENDPOINT;
 
 const httpClient = (url, options = {}) => {
@@ -197,6 +199,12 @@ const convertFileToBase64 = file =>
   });
 
 function App() {
+
+  if (process.env.NODE_ENV == 'production') {
+    ReactGA.initialize('UA-221362845-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
+
   return (
     <Admin
       dashboard={dashboard}
