@@ -9,16 +9,26 @@ export default function Main() {
 
 	const [answerAPI, SetAPIAnswer] = useState({});
 	const [loading, setLoading] = useState(false);
+	const { search } = window.location;
 
 	useEffect(() => {
 		const queryAPI = async () => {
-			const url = process.env.REACT_APP_ENDPOINT_PILLS;
-
 			setLoading(true);
 
-			const query = await axios({ url });
+			var searchText = new URLSearchParams(search).get('s');
+			if (searchText === null) {
+				const url = process.env.REACT_APP_ENDPOINT_PILLS;
+				const query = await axios({ url });
+				SetAPIAnswer(query);
+			}
+			else {
+				const url = process.env.REACT_APP_ENDPOINT_PILLS_SEARCH + "?s=" + searchText;
+				const query = await axios({ url });
 
-			SetAPIAnswer(query);
+				SetAPIAnswer(query);
+			}
+
+
 
 			setLoading(false);
 		};

@@ -7,11 +7,11 @@ export default function Header() {
     return (
         <Container>
             <Row>
-                <Col className="col-6">
+                <Col className="col-xs-12 col-md-6">
                     <Logo />
                 </Col>
 
-                <Col>
+                <Col className="col-xs-6 col-md-6">
                     <Search />
                 </Col>
             </Row>

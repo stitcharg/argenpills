@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 export default function Search() {
     const [query, setQuery] = useState("");
@@ -14,14 +15,21 @@ export default function Search() {
 
     return (
         <form action="/" method="get">
-            <div>
-                <input name="s"
-                    placeholder="Ingrese texto a buscar"
-                    onChange={event => setQuery(event.target.value)}
-                    value={query}
-                    autoComplete="false" />
-                <Button type="submit" className="btn btn-primary btn-sm">Buscar</Button>
-            </div>
-        </form>
+            <Row>
+                <Col>
+                    <div className="input-group input-group-sm">
+                        <input name="s"
+                            placeholder="Ingrese texto a buscar"
+                            onChange={event => setQuery(event.target.value)}
+                            value={query}
+                            autoComplete="false"
+                            className="form-control input-sm"
+                        /></div>
+                </Col>
+                <Col>
+                    <Button type="submit" className="btn btn-primary btn-sm">Buscar</Button>
+                </Col>
+            </Row>
+        </form >
     );
 }
