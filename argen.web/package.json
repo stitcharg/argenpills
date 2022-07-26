@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "update-test-site": "npm run build && rm -r ~/Projects/stitcharg.github.io/docs && cp -a ./build/. ~/Projects/stitcharg.github.io/docs/ && cp -a ./src/data/ ~/Projects/stitcharg.github.io/docs/data",
     "build:production": "NODE_ENV=production react-scripts build",
-    "upload:production": "aws s3 sync build s3://argenpills-mobile --profile ap"
+    "upload:production": "aws s3 sync build s3://argenpills-mobile --profile ap && aws cloudfront create-invalidation --distribution-id E2ZD45ZC0TAYZN --paths '/*' --profile ap"
   },
   "eslintConfig": {
     "extends": [

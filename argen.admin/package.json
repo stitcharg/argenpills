@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:production": "NODE_ENV=production react-scripts build",
-    "upload:production": "aws s3 sync build s3://argenpills-admin --profile ap"
+    "upload:production": "aws s3 sync build s3://argenpills-admin --profile ap && aws cloudfront create-invalidation --distribution-id EBTQACRFANAZ3 --paths '/*' --profile ap"
   },
   "eslintConfig": {
     "extends": [

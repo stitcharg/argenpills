@@ -6,6 +6,7 @@ import PillSubstance from "./Pill/Substance";
 import PillLoad from "./Pill/Load";
 import PillBadge from "./Pill/PillBadge";
 import PillComment from "./Pill/PillComment";
+import PillImage from "./Pill/PillImage";
 
 import dayjs from 'dayjs';
 
@@ -20,7 +21,7 @@ export default function Pill(data) {
 	//console.log("Pill Data", data);
 	return (
 		<Card className="pill">
-			<Card.Img variant="top" src={data.image} className="img-fluid" />
+			<PillImage imagePath={data.image} />
 			<Card.Body>
 				<Card.Title>{data.name} {data.color}
 					<PillBadge warning={data.warning}></PillBadge>
