@@ -35,7 +35,7 @@ export default function Pill(data) {
 					<PillComment comment={data.notes}></PillComment>
 				</ListGroup>
 
-				{data.lab != null &&
+				{data.lab &&
 					<Card.Link href={data.lab}>Test de Laboratorio</Card.Link>
 				}
 
