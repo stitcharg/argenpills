@@ -12,6 +12,7 @@ import { fetchUtils } from 'react-admin';
 import ReactGA from 'react-ga';
 
 const URL = process.env.REACT_APP_ENDPOINT;
+const CDN_IMAGES = process.env.REACT_APP_CDN_IMAGES;
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -158,6 +159,11 @@ const myDataProvider = {
 
       const pillImage = results[0];
       const labImage = results[1];
+
+      if (params.data.image)
+        params.data.image = params.data.image.replace(CDN_IMAGES, '');
+      if (params.data.lab_image)
+        params.data.lab_image = params.data.lab_image.replace(CDN_IMAGES, '');
 
       const existingData = {
         ...params,
